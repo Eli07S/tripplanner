@@ -24,7 +24,7 @@ def intro_data():
     fltbudget = float(Budget)
     CurrencySymbol = input ("What is the currency symbol at your destination? ")
     Conversion = float(input ("What is the conversion rate from USD to " + CurrencySymbol + " "))
-#intro_data()
+intro_data()
 
 def converter():
     HoursTraveled = int(TravelDays) * 24
@@ -41,7 +41,7 @@ def converter():
     # Budget in Destination Country
     destinationcurrency = fltbudget * Conversion
     print (destinationcurrency , CurrencySymbol, "this is the conversion rate from USD to " + CurrencySymbol)
-#converter()
+converter()
 
 def valid_check():
     try:
@@ -52,7 +52,19 @@ def valid_check():
         valid_check()
 valid_check()
 
-TimeDifference = int(input("please provide the time differnce, of your destinations, if time zone is behind, please provide a negative number "))
-TimeChange = (TimeDifference + 12)
-print ("when it is twelve O'clock at home it is, " ,TimeChange, " at your destination")
+def timedifference():
+    TimeDifference = int(input("please provide the time differnce, of your destinations, if time zone is behind, please provide a negative number "))
+    TimeChange = (TimeDifference + 12) % 24
+    print ("when it is twelve O'clock at home it is, " ,TimeChange, ":00 at your destination")
+timedifference()
 
+def Countryarea():
+    CountryArea = input ("Please enter the size of your destination in square kilometers")
+    try:
+        CountryArea = float(CountryArea)
+    except:
+        print("Check for proper format")
+        CountryArea()
+    roundedcountryarea = CountryArea * 0.386102
+    print ("The area of travel of your country is" , int(roundedcountryarea) , "square miles")
+Countryarea()
